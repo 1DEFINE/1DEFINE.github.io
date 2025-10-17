@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="sigma.wtf — a minimal, modern landing page" />
+  <meta name="theme-color" content="#f7d7f8" />
+  <title>submissive.wtf</title>
+  <style>
+    :root{
+      --accent: #f7d7f8;           /* primary theme color */
+      --bg: #0c0b10;               /* deep, near-black base */
+      --bg-accent: rgba(247,215,248,0.12); /* subtle ambient glow */
+      --text: #f7f5f8;             /* high-contrast light text */
+      --muted: #bbb2be;
+      --ring: rgba(247,215,248,0.55);
+      --glass: rgba(255,255,255,0.04);
+    }
+
+    /* Reset-ish */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 20% 15%, var(--bg-accent), transparent 60%),
+                  radial-gradient(800px 600px at 85% 80%, rgba(247,215,248,0.10), transparent 60%),
+                  var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 4rem 1.25rem;
+    }
+
+    .stack { 
+      display: grid; 
+      gap: 1rem; 
+      text-align: center; 
+      width: min(1024px, 92vw);
+    }
+
+    .logo {
+      margin: 0;
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      font-weight: 800;
+      font-size: clamp(3rem, 9vw, 7.25rem);
+      color: var(--text);
+      position: relative;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    /* Normal pink dot — no offsets, no pseudo-elements */
+    .dot {
+      display: inline;
+      margin-inline: 0.06em;
+      color: var(--accent);
+    }
+
+    .tagline {
+      /* moved down so it doesn't overlap the title */
+      margin: 1.25rem auto 0;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--muted);
+      letter-spacing: 0.01em;
+      backdrop-filter: blur(2px);
+      background: linear-gradient( to right, rgba(255,255,255,0.03), rgba(255,255,255,0.02) );
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      width: fit-content;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    /* Bottom-right floating question mark button (unchanged) */
+    .help-fab {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 56px; height: 56px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      text-decoration: none;
+      color: #0a0710;
+      background: radial-gradient(120% 120% at 20% 20%, var(--accent), #ffffff);
+      box-shadow: 0 8px 28px rgba(247,215,248,0.45), 0 1px 0 rgba(255,255,255,0.35) inset;
+      border: 1px solid rgba(255,255,255,0.6);
+      font-weight: 900;
+      font-size: 1.5rem;
+      transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms ease, filter 220ms ease;
+      user-select: none;
+      isolation: isolate;
+    }
+    .help-fab::after {
+      content: "";
+      position: absolute; inset: -8px;
+      border-radius: 999px;
+      border: 2px dashed rgba(247,215,248,0.25);
+      opacity: 0; transform: scale(0.9);
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+    .help-fab:hover {
+      transform: translateY(-3px) scale(1.04) rotate(-2deg);
+      box-shadow: 0 12px 36px rgba(247,215,248,0.6), 0 3px 0 rgba(255,255,255,0.5) inset;
+      filter: saturate(1.1);
+    }
+    .help-fab:hover::after { opacity: 1; transform: scale(1.02); }
+    .help-fab:active { transform: translateY(0) scale(0.98); }
+
+    /* Subtle card/glow at the center for added depth */
+    .glow-plate {
+      position: absolute; inset: 0; pointer-events: none;
+      display: grid; place-items: center;
+    }
+    .glow-plate::before {
+      content: "";
+      width: min(90vw, 800px);
+      height: clamp(220px, 28vw, 420px);
+      border-radius: 36px;
+      background: radial-gradient(80% 100% at 50% 50%, rgba(247,215,248,0.10), transparent 70%);
+      box-shadow: 0 0 120px rgba(247,215,248,0.18);
+    }
+
+    /* Respect user motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .help-fab, .help-fab::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="glow-plate" aria-hidden="true"></div>
+
+    <section class="stack" role="region" aria-label="Hero">
+      <h1 class="logo" aria-label="sigma dot w t f">
+        sigma<span class="dot" aria-hidden="true">.</span>wtf
+      </h1>
+
+      <p class="tagline">This site is for people that are sigma.</p>
+    </section>
+  </main>
+
+  <!-- Help link (unchanged) — replace href with your URL if needed -->
+  <a class="help-fab" href="https://wound.lol/0" aria-label="Learn more">?</a>
+</body>
+</html>
+
+</script>
+if (location.protocol === "http:") {
+    location.replace(location.href.replace(/^http:/, "https:"));
+}
+</script>
