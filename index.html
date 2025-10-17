@@ -8,16 +8,16 @@
   <title>submissive.wtf</title>
   <style>
     :root{
-      --accent: #f7d7f8;           /* primary theme color */
-      --bg: #0c0b10;               /* deep, near-black base */
-      --bg-accent: rgba(247,215,248,0.12); /* subtle ambient glow */
-      --text: #f7f5f8;             /* high-contrast light text */
+      --accent: #f7d7f8;           
+      --bg: #0c0b10;               
+      --bg-accent: rgba(247,215,248,0.12); 
+      --text: #f7f5f8;             
       --muted: #bbb2be;
       --ring: rgba(247,215,248,0.55);
       --glass: rgba(255,255,255,0.04);
     }
 
-    /* Reset-ish */
+   
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
@@ -56,7 +56,7 @@
       text-shadow: 0 1px 0 rgba(255,255,255,0.03);
     }
 
-    /* Normal pink dot — no offsets, no pseudo-elements */
+    
     .dot {
       display: inline;
       margin-inline: 0.06em;
@@ -64,7 +64,7 @@
     }
 
     .tagline {
-      /* moved down so it doesn't overlap the title */
+    
       margin: 1.25rem auto 0;
       font-size: clamp(1rem, 2.5vw, 1.35rem);
       color: var(--muted);
@@ -78,7 +78,7 @@
       box-shadow: 0 10px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06);
     }
 
-    /* Bottom-right floating question mark button (unchanged) */
+   
     .help-fab {
       position: fixed;
       right: 24px;
@@ -113,7 +113,7 @@
     .help-fab:hover::after { opacity: 1; transform: scale(1.02); }
     .help-fab:active { transform: translateY(0) scale(0.98); }
 
-    /* Subtle card/glow at the center for added depth */
+  
     .glow-plate {
       position: absolute; inset: 0; pointer-events: none;
       display: grid; place-items: center;
@@ -127,7 +127,7 @@
       box-shadow: 0 0 120px rgba(247,215,248,0.18);
     }
 
-    /* Respect user motion preferences */
+    
     @media (prefers-reduced-motion: reduce) {
       .help-fab, .help-fab::after { animation: none !important; transition: none !important; }
     }
@@ -148,7 +148,7 @@
     </section>
   </main>
 
-  <!-- Help link (unchanged) — replace href with your URL if needed -->
+  
   <a class="help-fab" href="https://wound.lol/0" aria-label="Learn more">?</a>
 </body>
 </html>
